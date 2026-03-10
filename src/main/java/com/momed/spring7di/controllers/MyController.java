@@ -1,13 +1,21 @@
 package com.momed.spring7di.controllers;
 
+import com.momed.spring7di.services.GreetingService;
+import com.momed.spring7di.services.GreetingServiceImpl;
 import org.springframework.stereotype.Controller;
 
 @Controller
 public class MyController {
 
+    private final GreetingService greetingService;
+
+    public MyController() {
+        this.greetingService = new GreetingServiceImpl();
+    }
+
     public String sayHi(){
         System.out.println("I'm a controller banana!");
 
-        return "Hi!!!";
+        return greetingService.sayGreeting();
     }
 }
